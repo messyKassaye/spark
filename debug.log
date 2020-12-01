@@ -1,0 +1,28 @@
+[0619/085652.173:ERROR:settings.cc(320)] Settings magic is not 1129342067
+[0731/164510.852:ERROR:settings.cc(320)] Settings magic is not 1129342067
+[1010/215758.573:ERROR:directory_reader_win.cc(43)] FindFirstFile: The system cannot find the path specified. (0x3)
+[1017/092706.097:ERROR:settings.cc(320)] Settings magic is not 1129342067
+[1017/093706.183:ERROR:directory_reader_win.cc(43)] FindFirstFile: The system cannot find the path specified. (0x3)
+[1017/123002.170:ERROR:process_reader_win.cc(151)] SuspendThread: Access is denied. (0x5)
+[1017/123002.170:ERROR:process_reader_win.cc(151)] SuspendThread: Access is denied. (0x5)
+[1017/123002.170:ERROR:process_reader_win.cc(151)] SuspendThread: Access is denied. (0x5)
+[1017/123002.170:ERROR:process_reader_win.cc(151)] SuspendThread: Access is denied. (0x5)
+[1017/123002.170:ERROR:process_reader_win.cc(151)] SuspendThread: Access is denied. (0x5)
+[1017/123002.170:ERROR:process_reader_win.cc(151)] SuspendThread: Access is denied. (0x5)
+[1017/123002.170:ERROR:process_reader_win.cc(151)] SuspendThread: Access is denied. (0x5)
+[1017/123002.170:ERROR:process_reader_win.cc(151)] SuspendThread: Access is denied. (0x5)
+[1017/123002.170:ERROR:process_reader_win.cc(151)] SuspendThread: Access is denied. (0x5)
+[1017/123002.170:ERROR:process_reader_win.cc(151)] SuspendThread: Access is denied. (0x5)
+[1017/123002.170:ERROR:process_reader_win.cc(123)] NtOpenThread: {Access Denied} A process has requested access to an object, but has not been granted those access rights. (0xc0000022)
+[1017/123002.186:ERROR:exception_snapshot_win.cc(99)] thread ID 6708 not found in process
+[1023/081756.625:ERROR:directory_reader_win.cc(43)] FindFirstFile: The system cannot find the path specified. (0x3)
+[1024/105207.955:ERROR:directory_reader_win.cc(43)] FindFirstFile: The system cannot find the path specified. (0x3)
+[1026/144502.948:ERROR:directory_reader_win.cc(43)] FindFirstFile: The system cannot find the path specified. (0x3)
+[1027/141005.419:ERROR:directory_reader_win.cc(43)] FindFirstFile: The system cannot find the path specified. (0x3)
+[1029/161334.632:ERROR:directory_reader_win.cc(43)] FindFirstFile: The system cannot find the path specified. (0x3)
+[1030/085303.729:ERROR:directory_reader_win.cc(43)] FindFirstFile: The system cannot find the path specified. (0x3)
+[1030/191909.013:ERROR:directory_reader_win.cc(43)] FindFirstFile: The system cannot find the path specified. (0x3)
+[1031/085543.332:ERROR:directory_reader_win.cc(43)] FindFirstFile: The system cannot find the path specified. (0x3)
+[1108/093045.246:ERROR:directory_reader_win.cc(43)] FindFirstFile: The system cannot find the path specified. (0x3)
+[1108/130609.489:ERROR:directory_reader_win.cc(43)] FindFirstFile: The system cannot find the path specified. (0x3)
+[1109/085421.783:ERROR:directory_reader_win.cc(43)] FindFirstFile: The system cannot find the path specified. (0x3)

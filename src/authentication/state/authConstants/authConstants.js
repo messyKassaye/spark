@@ -1,0 +1,3 @@
+export const ME = 'ME'
+export const STORE_USER_UTILITY = 'USER_UTILITY'
+export const CHANGE_PROFILE_PICTURE = 'CHANGE_PROFILE_PICTURE'
