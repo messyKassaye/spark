@@ -8,15 +8,29 @@ export const createAccountStyle = theme=>({
         flexDirection:'column',
         justifyContent:'center'
     },
+    appBar:{
+      backgroundColor:'white',
+      display:'none',
+      [theme.breakpoints.down('xs')]:{
+        display:'flex'
+      }
+    },
+    link:{
+      display:'none',
+      [theme.breakpoints.down('xs')]:{
+        display:'flex'
+      }
+    },
     card:{
-        width:'50%',
-        marginTop:120,
+        width:'70%',
         backgroundColor:'transparent',
         display:'flex',
         flexDirection:'column',
         justifyContent:'center',
         [theme.breakpoints.down('xs')]:{
-          width:'90%'
+          width:'90%',
+          marginTop:120,
+
         }
     },
     text_input:{

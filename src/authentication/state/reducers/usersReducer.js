@@ -1,5 +1,5 @@
 import {
-    ME,CHANGE_PROFILE_PICTURE
+    ME,CHANGE_PROFILE_PICTURE,SHOW_USER
    
 } from "../authConstants/authConstants";
 
@@ -12,7 +12,10 @@ const  initialState = {
     response:{
         status:false,
         message:'changing your profile picture'
-    }
+    },
+    chatUser:{},
+    chatLoading:true
+    
 }
 
 export default function (state=initialState,action) {
@@ -28,6 +31,12 @@ export default function (state=initialState,action) {
                 return {
                     ...state,
                     response:action.payload
+                }
+            case SHOW_USER:
+                return {
+                    ...state,
+                    chatUser:action.payload,
+                    chatLoading:false
                 }
         default:
             return  state

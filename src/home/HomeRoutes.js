@@ -2,7 +2,6 @@ import React from 'react'
 import {BrowserRouter as Router, Switch,Route} from "react-router-dom";
 import CreateAccount from './CreateAccount';
 import HomePage from './HomePage';
-import history from './history/history'
 import CreateAccountAndLogin from './dialogs/CreateAccountAndLogin';
 class HomeRoutes extends React.Component{
     render(){
@@ -13,12 +12,12 @@ class HomeRoutes extends React.Component{
                
                 <Route 
                  path='/create_account'
-                 render={ props => <CreateAccount {...props} />}
+                 component={CreateAccount}
                 />
 
                 <Route 
                  path='/login'
-                 render={ props => <CreateAccountAndLogin {...props} />}
+                 component={CreateAccountAndLogin}
                 />
 
             </Switch>

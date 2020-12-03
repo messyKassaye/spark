@@ -19,6 +19,8 @@ import LoadingButton from '../authentication/commons/LoadingButton';
 import axios from 'axios'
 import { API_AUTH_URL } from '../constants/constants';
 import { set } from '../TokenService';
+import logo from '../assets/logo.png'
+import {Link} from 'react-router-dom'
 class CreateAccount extends React.Component{
 
     constructor(props) {
@@ -191,7 +193,9 @@ class CreateAccount extends React.Component{
                 <AppBar style={{backgroundColor:'white'}} elevation={0}>
                     <Toolbar>
                         <Container maxWidth={'lg'}>
-                        <LogoComponent/>
+                            <Typography component={Link} to={'/'}>
+                              <img   width={150} height={100} src={logo}/>
+                            </Typography> 
                         </Container>
                     </Toolbar>
                     <Divider/>

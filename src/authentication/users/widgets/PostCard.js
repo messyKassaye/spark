@@ -1,4 +1,4 @@
-import { Avatar, Backdrop, Card, CardActionArea, CardActions, CardMedia, Icon, IconButton, Typography } from '@material-ui/core'
+import { Avatar, Backdrop, Button, Card, CardActionArea, CardActions, CardContent, CardMedia, Chip, Icon, IconButton, Typography } from '@material-ui/core'
 import { Clear, FastRewind, FlipToBackSharp, Forward, Room, School, Star } from '@material-ui/icons';
 import React,{ useState, useMemo } from 'react'
 import FavoriteBorderIcon from '@material-ui/icons/FavoriteBorder';
@@ -15,7 +15,7 @@ import { red } from '@material-ui/core/colors';
 import { API_URL } from '../../../constants/constants';
 import { makeStyles } from '@material-ui/core/styles';
 import NoPeersIsFound from './NoPeersIsFound';
-
+import WorkIcon from '@material-ui/icons/Work';
 const useStyles = makeStyles((theme) => ({
     buttons:{
         display:'flex',
@@ -44,13 +44,14 @@ const dataHolder=[];
 let charactersState = ''
 
   function PostCard(props){  
-    const classes = useStyles();
-    charactersState = props
-    const [characters, setCharacters] = useState(props.post.users)
+  const classes = useStyles();
+  charactersState = props
+  const [characters, setCharacters] = useState(props.post.users)
   const [lastDirection, setLastDirection] = useState()
   const [latestIndex,setLatestIndex] = useState()
   const [direction,setDirection] = useState()
   const [total,setTotal] = useState(0)
+  const [rewinds,setRewinds] = useState(false)
 
   const childRefs = useMemo(() => Array(props.post.users.length).fill(0).map(i => React.createRef()), [])
 
@@ -111,10 +112,35 @@ let charactersState = ''
       })
   }
 
+  const rewindUser = (status)=>{
+        setRewinds(status)
+  }
+
         return (
            <div style={{width:'90%',overflow:'hidden',display:'flex',flexDirection:'row',justifyContent:'center'}}>
             
             {
+                rewinds
+                ?
+                    (
+                        <Card style={{width:400,height:500}}>
+                            <CardContent style={{display:'flex',flexDirection:'column',alignItems:'center'}}>
+                            <Typography variant={'h6'}>
+                                This person do not add more pictures
+                            </Typography>
+                             <Button 
+                             onClick={()=>rewindUser(false)}
+                             color={'primary'} variant={'text'} 
+                             style={{textTransform:'none',marginTop:25}}>
+                                 Back to main
+                             </Button>
+                            </CardContent>
+                        </Card>
+                    )
+                :
+                    (
+                        <div>
+                             {
                 total===props.post.users.length
                 ?
                     (
@@ -168,11 +194,11 @@ let charactersState = ''
                                 bottom:0,
                                 padding:15,
                                 height:'auto',
-                                boxShadow:" inset 0px 0px 0px 60px rgba(0,0,0,0.1)",
+                                boxShadow:" inset 0px 0px 0px 60px rgba(0,0,0,0.2)",
                                 width:'100%',
                                 backgroundSize: 'cover',
                                 backgroundPosition: 'center'}}>
-                                        <Typography variant={'h5'} style={{color:'white',zIndex:1000}}>
+                                        <Typography variant={'h5'} style={{color:'white',marginBottom:5}}>
                                             {`${users.name} ${users.age}`}
                                         </Typography >
                                         {
@@ -180,13 +206,46 @@ let charactersState = ''
                                             ?
                                                 (
                                                     <div>
-                                                        <div style={{display:'flex',color:'white',flexDirection:'row',justifyContent:'flex-start',marginBottom:5}}>
-                                                            <School size={'small'} color={'inherit'}/>
-                                                            <Typography style={{marginLeft:5}}>Addis ababa university</Typography>
-                                                        </div>
-                                                        <div style={{display:'flex',color:'white',flexDirection:'row',justifyContent:'flex-start'}}>
-                                                            <Room size={'small'} color={'inherit'}/>
-                                                            <Typography >{users.location}</Typography>
+                                                            {
+                                                                users.utility.school!==null
+                                                                ?
+                                                                    (
+                                                                        <div style={{display:'flex',flexDirection:'row',color:'white',marginBottom:3}}>
+                                                                            <School size={'small'}/>
+                                                                            <Typography style={{marginLeft:5}}>
+                                                                                {users.utility.school}
+                                                                            </Typography>
+                                                                        </div>
+                                                                    )
+                                                                :
+                                                                    (null)
+                                                            }
+
+{
+                                                                users.utility.company!==null
+                                                                ?
+                                                                    (
+                                                                        <div style={{display:'flex',flexDirection:'row',color:'white'}}>
+                                                                            <WorkIcon size={'small'}/>
+                                                                            <Typography style={{marginLeft:5}}>
+                                                                                {users.utility.company}
+                                                                            </Typography>
+                                                                        </div>
+                                                                    )
+                                                                :
+                                                                    (null)
+                                                            }
+                                                            
+                                                        <div style={{display:'flex',flexDirection:'row',justifyContent:'flex-start',marginTop:5}}>
+                                                            {
+                                                                users.passions.map(passion=>(
+                                                                    <Chip
+                                                                     style={{backgroundColor:'rgba(0,0,0,0.5)',color:'white',marginRight:5}}
+                                                                     label={passion.name}
+
+                                                                    />
+                                                                ))
+                                                            }
                                                         </div>
                                                     </div>
                                                 )
@@ -203,6 +262,7 @@ let charactersState = ''
                 
                 <div className={classes.buttons}>
                      <IconButton 
+                     onClick={()=>rewindUser(true)}
                      size={'medium'} 
                      color={'primary'}>
                         <Avatar
@@ -218,7 +278,7 @@ let charactersState = ''
                         />
                     </IconButton>
 
-                    <IconButton size={'medium'} color={'primary'}>
+                    <IconButton onClick={() => swipe('up')} size={'medium'} color={'primary'}>
                         <Avatar
                         src={star}
                         className={classes.icons}
@@ -238,7 +298,9 @@ let charactersState = ''
             </div>
                     )
             }
-
+                        </div>
+                    )
+            }
            </div>
         )
   }

@@ -35,11 +35,13 @@ class EditInfo extends React.Component{
 
             const {formData} = this.state
             const utility = this.props.user.relations.utilities
-            formData['about'] = this.props.user.relations.utilities.about
-            formData['company'] = utility.company
-            formData['job_title'] = utility.job_title
-            formData['school'] = utility.school
-            this.setState(formData)
+            if(utility!==null){
+                formData['about'] = this.props.user.relations.utilities.about
+                formData['company'] = utility.company
+                formData['job_title'] = utility.job_title
+                formData['school'] = utility.school
+                this.setState(formData)
+            }
     }
     
 

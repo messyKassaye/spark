@@ -102,4 +102,6 @@ export default function UsersSmallDevice() {
       <TabPanel value={value} index={3}>
         <SmallDeviceProfile/>
       </TabPanel>
-    </d
+    </div>
+  );
+}

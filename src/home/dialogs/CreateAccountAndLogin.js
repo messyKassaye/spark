@@ -1,4 +1,4 @@
-import { AppBar, Card, CardContent, CardHeader, Container, Divider, InputAdornment, TextField, Toolbar } from '@material-ui/core'
+import { AppBar, Card, CardContent, CardHeader, Container, Divider, InputAdornment, TextField, Toolbar, Typography } from '@material-ui/core'
 import React from 'react'
 import withStyles from '@material-ui/core/styles/withStyles'
 import createAccountStyle from './styles/createAccountStyle'
@@ -8,10 +8,13 @@ import { TextValidator, ValidatorForm } from 'react-material-ui-form-validator'
 import { AccountCircle, PhoneAndroidRounded, PhoneCallback, PhoneCallbackSharp, PhoneCallbackTwoTone } from '@material-ui/icons'
 import { API_AUTH_URL } from '../../constants/constants'
 import { set, setData } from '../../TokenService'
+import {Link} from 'react-router-dom'
 import {connect} from 'react-redux'
 import {showMainDialog} from '../../authentication/commons/state/actions/dialogActions'
 import LogoComponent from '../../authentication/commons/LogoComponent'
 import { withRouter } from 'react-router-dom'
+import logo from '../../assets/logo.png'
+import history from '../history/history'
 class CreateAccountAndLogin extends React.Component{
 
     constructor(props) {
@@ -66,7 +69,7 @@ class CreateAccountAndLogin extends React.Component{
             .then((res) => res.data)
             .then((response) => {
                 set(response.token)
-                this.props.history.push('/auth')
+                history.push('/auth')
                 window.location.reload()
             })
             .catch(onerror=>{
@@ -81,7 +84,7 @@ class CreateAccountAndLogin extends React.Component{
                     let code = onerror.response.status
                     if(code===403){
                         setData(formData)
-                        this.props.history.push('/auth')
+                        history.push('/')
                         window.location.reload()
                     }
                     this.setState({
@@ -104,16 +107,19 @@ class CreateAccountAndLogin extends React.Component{
         const isEnabled = formData.email.length > 0 && formData.password.length > 0
         return (
             <div className={classes.container}>
-                <AppBar style={{backgroundColor:'white'}} elevation={0}>
+                <AppBar className={classes.appBar} elevation={0}>
                     <Toolbar>
                         <Container maxWidth={'lg'}>
-                        <LogoComponent/>
+                           <Typography>
+                             <img   width={150} height={100} src={logo}/>
+                           </Typography>
                         </Container>
                     </Toolbar>
                     <Divider/>
                 </AppBar>
 
-                <Card elevation={0} className={classes.card}>
+               <div style={{display:'flex',flexDirection:'column',alignItems:'center'}}>
+                     <Card elevation={0} className={classes.card}>
                 <CardContent>
                     <ValidatorForm onSubmit={this.handleSubmit}>
                     <TextValidator
@@ -173,6 +179,7 @@ class CreateAccountAndLogin extends React.Component{
                 />
                 </CardContent>
             </Card>
+               </div>
             </div>
         )
     }

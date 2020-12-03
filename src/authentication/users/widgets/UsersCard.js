@@ -3,8 +3,9 @@ import { Chat } from '@material-ui/icons'
 import React from 'react'
 import {connect} from 'react-redux'
 import {showMainDialog} from '../../commons/state/actions/dialogActions'
-import ChatBoard from './ChatBoard'
+import ChatRoom from './ChatRoom'
 import ChatHeader from './ChatHeader'
+import {Link} from 'react-router-dom'
 class UsersCard extends React.Component{
 
     constructor(props) {
@@ -14,26 +15,11 @@ class UsersCard extends React.Component{
         }
     }
 
-    chatsOn = (user)=>{
-        this.props.showMainDialog({
-            show:true,
-            maxWidth:'sm',
-            page:<ChatBoard/>,
-            headers:true,
-            headerComponent:<ChatHeader user={user}/>,
-            title:null,
-            actions:{
-                on:false,
-                path:'',
-                id:''
-            }
-        })
-    }
     
     render() {
         const matches = this.props.matches
         return (
-            <Card style={{backgroundColor:'transparent'}} elevation={0} onClick={()=>this.chatsOn(matches.user)}>
+            <Card style={{textDecoration:'none'}} elevation={0} component={Link} to={`/auth/messages/${matches.user.id}`}>
                 <CardHeader
                  avatar={<Avatar src={matches.user.profile_pic_path}></Avatar>}
                  title={matches.user.name}
