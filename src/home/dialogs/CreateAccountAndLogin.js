@@ -166,7 +166,7 @@ class CreateAccountAndLogin extends React.Component{
                         <span className={classes.label}>Or</span>
                         <Divider className={classes.divider}/>
                     </div>
-                    <TextField
+                    {/* <TextField
                     className={classes.phone}
                     label="Login via phone number"
                     InputProps={{
@@ -176,7 +176,7 @@ class CreateAccountAndLogin extends React.Component{
                         </InputAdornment>
                     ),
                     }}
-                />
+                /> */}
                 </CardContent>
             </Card>
                </div>

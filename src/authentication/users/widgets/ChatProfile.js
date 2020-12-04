@@ -27,7 +27,7 @@ class ChatProfile extends React.Component{
                  style={{width:'100%',height:450}}
                  image={this.props.user.attribute.profile_pic_path}
                 />
-                <CardActions style={{display:'flex',flexDirection:'column',alignItems:'flex-start'}}>
+                <CardActions style={{display:'flex',flexDirection:'column',alignItems:'flex-start',flexGrow:1}}>
                     <Typography variant={'h5'} style={{marginBottom:10}}>
                         {`${this.props.user.attribute.name} ${this.props.user.attribute.age}`}
                     </Typography>

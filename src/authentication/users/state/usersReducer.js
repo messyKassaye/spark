@@ -6,6 +6,7 @@ import LocationReducer from "./reducer/LocationReducer";
 import AddMediaReducer from "./reducer/AddMediaReducer";
 import PassionReducer from "./reducer/PassionReducer";
 import ReportReducer from "./reducer/ReportReducer";
+import ChatReducer from "./reducer/ChatReducer";
 export default combineReducers({
     postReducer:PostReducer,
     MatchesReducer:MatchesReducer,
@@ -13,5 +14,6 @@ export default combineReducers({
     locationReducer:LocationReducer,
     addMediaReducer:AddMediaReducer,
     passionReducer:PassionReducer,
-    reportReducer:ReportReducer
+    reportReducer:ReportReducer,
+    chatReducer:ChatReducer
 })

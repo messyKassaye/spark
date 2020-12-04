@@ -13,12 +13,16 @@ import ChatProfile from './ChatProfile'
 import {showUser} from '../../state/actions/usersActions'
 import HorizontalLoading from '../loader/HorizontalLoading'
 import { Link } from 'react-router-dom'
-import { isInteger } from 'lodash'
 import Chats from './Chats'
-class ChatBoard extends React.Component{
+import {showChats} from '../state/actions/ChatAction'
+class ChatRoom extends React.Component{
 
     constructor(props) {
         super(props);
+        this.state ={
+            mobileOpen: false,
+            currentPage:'Dashboard'
+        }
         
     }
     
@@ -27,14 +31,10 @@ class ChatBoard extends React.Component{
         this.props.me()
         let id = this.props.match.params.id
         this.props.showUser(id)
+        this.props.showChats(id)
     }
 
-    
-
-    /*componentDidUpdate(){
-        let id = this.props.match.params.id
-        this.props.showUser(id)
-    }*/
+   
 
     handleDrawerToggle = (value,page) => event=>{
         if (event && event.type === 'keydown' && (event.key === 'Tab' || event.key === 'Shift')) {
@@ -50,20 +50,7 @@ class ChatBoard extends React.Component{
        
     }
 
-    showDialog = (component)=>{
-        this.props.showMainDialog({
-            show:true,
-            style:{display:'flex',flexDirection:'row',justifyContent:'flex-start',top:-550},
-            maxWidth:'sm',
-            page:component,
-            title:`Spark`,
-            actions:{
-                on:false,
-                path:'',
-                id:''
-            }
-        })
-    }
+
 
     render() {
         const {container} = this.props;
@@ -119,7 +106,7 @@ class ChatBoard extends React.Component{
                 <main style={{flexGrow:1}}>
                     <div style={{height:'100vh'}}>
                     {
-                        this.props.chatLoading
+                        this.props.chatLoading&&this.props.chatsLoading
                         ?
                             (
                                 <Grid container spacing={2}>
@@ -153,20 +140,9 @@ class ChatBoard extends React.Component{
                                                 }
                                                />
                                                <Divider/>
-                                               <CardContent>
-                                                <Chats user={this.props.user} chatUser={this.props.chatUser}/>
-                                               </CardContent>
-                                               <CardActions style={{width:'100%',top:'75%',position:'relative'}}>
-                                                        <div style={{display:'flex',flexDirection:'row',width:'100%'}}>
-                                                            <Input
-                                                             placeholder={'Write your message...'}
-                                                             style={{width:'90%'}}
-                                                            />
-                                                            <IconButton color={'primary'}>
-                                                                <Send/>
-                                                            </IconButton>
-                                                       </div>
-                                               </CardActions>
+
+                                               <Chats chats={this.props.chats} user={this.props.user} chatUser={this.props.chatUser}/>
+                                           
                                            </Card>
                                     </Grid>
 
@@ -188,7 +164,9 @@ const mapStateToProps = state=>({
     user:state.userData.user,
     loading:state.userData.loading,
     chatUser:state.userData.chatUser,
-    chatLoading:state.userData.chatLoading
+    chatLoading:state.userData.chatLoading,
+    chats:state.authReducer.usersReducer.chatReducer.prevChats,
+    chatsLoading:state.authReducer.usersReducer.chatReducer.loading
 })
 
-export default withStyles(authStyle)(connect(mapStateToProps,{me,showUser})(ChatBoard))
+export default withStyles(authStyle)(connect(mapStateToProps,{me,showUser,showChats})(ChatRoom))
