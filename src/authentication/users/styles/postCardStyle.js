@@ -2,7 +2,7 @@ const  postCardStyle = theme=>({
 
     container:{
         height:500,
-        width:400,
+        width:400
 
     },
     bottomCard:{

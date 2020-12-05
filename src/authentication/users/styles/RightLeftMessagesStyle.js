@@ -24,6 +24,7 @@ const RightLeftMessageStyle = theme=>({
     innerLeft:{
         backgroundColor:'#f4f4f8',
         padding:10,
+        margin:10,
         width:'auto',
         borderTopLeftRadius:20,
         borderBottomLeftRadius:20,

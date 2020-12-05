@@ -83,9 +83,7 @@ class CreateAccountAndLogin extends React.Component{
                 }else {
                     let code = onerror.response.status
                     if(code===403){
-                        setData(formData)
-                        history.push('/')
-                        window.location.reload()
+                        this.setState({errorMessage:'Incorrect email or password is used'})
                     }
                     this.setState({
                         loading: false,
@@ -121,6 +119,9 @@ class CreateAccountAndLogin extends React.Component{
                <div style={{display:'flex',flexDirection:'column',alignItems:'center'}}>
                      <Card elevation={0} className={classes.card}>
                 <CardContent>
+                    <Typography color={'primary'}>
+                        {this.state.errorMessage}
+                    </Typography>
                     <ValidatorForm onSubmit={this.handleSubmit}>
                     <TextValidator
                         className={classes.text_input}

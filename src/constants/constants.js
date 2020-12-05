@@ -1,4 +1,4 @@
-export const API_AUTH_URL='http://localhost:8000/api/auth/'
-export const API_URL='http://localhost:8000/api/'
-export const ADMIN_API_URL = 'http://localhost:8000/admin/'
-export const PARTNER_API_URL = 'http://localhost:8000/api/partners/'
+export const API_AUTH_URL='https://api.meetyourspark.com/api/auth/'
+export const API_URL='https://api.meetyourspark.com/api/'
+export const ADMIN_API_URL = 'https://api.meetyourspark.com/admin/'
+export const PARTNER_API_URL = 'https://api.meetyourspark.com/api/partners/'

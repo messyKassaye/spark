@@ -51,7 +51,8 @@ class CreateAccount extends React.Component{
             uploadingFile:false,
             uploadDone:false,
             uploadStatus:false,
-            filePath:''
+            filePath:'',
+            bigFile:false
         }
         this.inputOpenFileRef = React.createRef()
         
@@ -83,10 +84,19 @@ class CreateAccount extends React.Component{
      
         // Update the state 
         const file = event.target.files[0]
+        let FileSize = file.size / 1024 / 1024; // in MB
+        if (FileSize >=1) {
+            this.setState({
+                bigFile:true
+            })
+        } else {
+       
         const formData = new FormData()
         formData.append('file', file);
         this.setState({uploadingFile:true})
         this.props.uploadFile(formData)
+
+        }
         
       }
       
@@ -385,9 +395,21 @@ class CreateAccount extends React.Component{
                                 :
                                     (
                                         <div className={classes.profile_pic}>
-                                                <Typography  color={'textSecondary'}>
-                                                    Profile photo
-                                                </Typography>
+                                                {
+                                                    this.state.bigFile
+                                                    ?
+                                                        (
+                                                            <Typography color={'primary'}>
+                                                                Your file is too big. Please upload image less than 1MB
+                                                            </Typography>
+                                                        )
+                                                    :
+                                                        (
+                                                            <Typography  color={'textSecondary'}>
+                                                                Profile photo. Size must be less than 1MB
+                                                            </Typography>
+                                                        )
+                                                }
                                                 <input 
                                                 style={{display:"none"}}
                                                 onChange={this.onFileChange}
@@ -397,11 +419,11 @@ class CreateAccount extends React.Component{
                                                 <Button
                                                     onClick={this.onFileUpload}
                                                     variant="outlined"
-                                                    style={{color:grey[600]}}      
+                                                    style={{color:grey[600],marginTop:10}}      
                                                 >
                                                     Upload from computer
                                                 </Button>
-                                            </div>
+                                        </div>
                                     )
                             }
                         </Grid>

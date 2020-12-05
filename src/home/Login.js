@@ -79,9 +79,7 @@ class Login extends React.Component{
                 }else {
                     let code = onerror.response.status
                     if(code===403){
-                        setData(formData)
-                        this.props.history.push('/auth')
-                        window.location.reload()
+                        this.setState({errorMessage:'Incorrect email or password is used'})
                     }
                     this.setState({
                         loading: false,

@@ -5,6 +5,7 @@ export const homeStyle = theme=>({
         backgroundImage: "url(" +diversity+ ")",
         backgroundPosition: 'center',
         backgroundSize: 'cover',
+        marginTop:-20,
         backgroundRepeat: 'no-repeat',
         height:'100vh',
         boxShadow: "inset 0px 0px 200px 200px rgba(0,0,0,0.8)",

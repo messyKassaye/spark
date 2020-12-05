@@ -34,8 +34,6 @@ class ChatRoom extends React.Component{
         this.props.showChats(id)
     }
 
-   
-
     handleDrawerToggle = (value,page) => event=>{
         if (event && event.type === 'keydown' && (event.key === 'Tab' || event.key === 'Shift')) {
             return;

@@ -33,3 +33,4 @@
 [1204/095104.790:ERROR:directory_reader_win.cc(43)] FindFirstFile: The system cannot find the path specified. (0x3)
 [1204/165628.874:ERROR:settings.cc(320)] Settings magic is not 1129342067
 [1204/170628.897:ERROR:directory_reader_win.cc(43)] FindFirstFile: The system cannot find the path specified. (0x3)
+[1205/231017.077:ERROR:exit_code_watcher_win.cc(87)] Failed to wait for process exit or stop event
